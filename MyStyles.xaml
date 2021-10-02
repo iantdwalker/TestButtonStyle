@@ -1,0 +1,67 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	
+	<!-- Some shared properties that apply to both buttons at all times --> 
+	<Style TargetType="{x:Type Button}" x:Key="ButtonSharedStyle">
+   		<Setter Property="FontSize" Value="16" />
+   		<Setter Property="Foreground" Value="White" />
+	</Style>
+	
+	<!-- Back button -->
+	<Style TargetType="{x:Type Button}" x:Key="ButtonBackStyle" BasedOn="{StaticResource ButtonSharedStyle}">
+		<!-- Back button regular properties here for default close condition-->
+		<Setter Property="Background" Value="Blue" />
+		
+		<!-- The control template has to be set here to allow the Trigger Property="IsMouseOver" below to function -->
+		<Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                    	<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                	</Border>
+                </ControlTemplate>
+         	</Setter.Value>
+         </Setter>
+				
+		<!-- Back button style trigger for the Back condition -->
+		<Style.Triggers>
+	        <!-- Both the data trigger and style trigger can be combined when both conditions are true -->
+			<DataTrigger Binding="{Binding Path=ButtonBackLabel}" Value="Close">
+	           	<Setter Property="Background" Value="Gray" />				
+	        </DataTrigger>
+			<Trigger Property="IsMouseOver" Value="True">
+            	<Setter Property="Background" Value="Yellow"/>
+        	</Trigger>
+	    </Style.Triggers>
+	</Style>
+	
+	<!-- Next button -->
+	<Style TargetType="{x:Type Button}" x:Key="ButtonNextStyle" BasedOn="{StaticResource ButtonSharedStyle}">
+   		<!-- Next button regular properties here for default Next condition-->
+		<Setter Property="Background" Value="Blue" />
+		
+		<!-- The control template has to be set here to allow the Trigger Property="IsMouseOver" below to function -->
+		<Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                    	<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                	</Border>
+                </ControlTemplate>
+         	</Setter.Value>
+         </Setter>
+		
+		<!-- Next button style trigger for the Send condition -->
+		<Style.Triggers>
+			<!-- Both the data trigger and style trigger can be combined when both conditions are true -->
+			<DataTrigger Binding="{Binding Path=ButtonNextLabel}" Value="Send">
+	           	<Setter Property="Background" Value="Green" />				
+	        </DataTrigger>
+			<Trigger Property="IsMouseOver" Value="True">
+            	<Setter Property="Background" Value="Yellow"/>
+        	</Trigger>
+		</Style.Triggers>
+	</Style>
+		
+	
+</ResourceDictionary>

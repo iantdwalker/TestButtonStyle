@@ -1,0 +1,34 @@
+﻿<Window x:Class="TestButtonStyle.Window1"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="TestButtonStyle" Height="300" Width="300">
+	<Window.Resources>   		
+		<ResourceDictionary Source="MyStyles.xaml" />
+	</Window.Resources>
+	<Grid>
+		<Grid.ColumnDefinitions>
+        	<ColumnDefinition Width="3*" />
+			<ColumnDefinition Width="3*" />
+			<ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+        	<RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />			
+        </Grid.RowDefinitions>
+		<Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=PageLabel, Mode=TwoWay}" />
+		<Button Name="ButtonBack"		        
+		        Grid.Column="0"
+		        Grid.Row="1"
+		        Content="{Binding Path=ButtonBackLabel, Mode=TwoWay}"
+		        Command="{Binding Path=ButtonBackCommand}"
+				Style="{StaticResource ButtonBackStyle}"
+		/>
+		<Button Name="ButtonNext"		        
+				Grid.Column="2"
+		        Grid.Row="1"
+		        Content="{Binding Path=ButtonNextLabel, Mode=TwoWay}"
+		        Command="{Binding Path=ButtonNextCommand}"
+				Style="{StaticResource ButtonNextStyle}"
+		/>
+	</Grid>
+</Window>
